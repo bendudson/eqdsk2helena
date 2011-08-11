@@ -1,0 +1,47 @@
+########################################################
+##                                                    ##
+##                 EQDSK 2 HELENA                     ##
+##                                                    ##
+########################################################
+
+Converts a G-EQDSK formatted Grad-Shafranov solution
+on an R-Z mesh and converts it into a set of input files
+for the HELENA fixed-boundary equilibrium solver.
+
+Can be used to refine an equilibrium from EFIT for
+input to a linear stability code like ELITE.
+
+
+Usage
+=====
+
+Basic use:
+
+IDL> eqdsk2helena, "input.geqdsk"
+
+A graph will be plotted showing some contours of psi,
+the contour used for the boundary shape (in red), and
+the points equally spaced in theta as black crosses.
+
+Settings
+--------
+
+psin  = 0.995  Set the normalised psi for the boundary shape
+mfm   = 64     Number of points on the boundary. 
+               Must be a power of 2
+nrmap = 101    Number of radial points in final mesh
+npmap = 129    Number of poloidal points in final mesh
+/new           Switch to change XML format (see below)
+
+XML formats
+===========
+
+Different XML formats are used in HELENA: older versions use
+an input_helena.xml which looks like:
+
+....
+  <numerical_parameters>
+    <nr> 201 </nr>
+    <np> 129 </np>
+....
+
